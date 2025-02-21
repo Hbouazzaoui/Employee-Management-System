@@ -14,14 +14,6 @@ public class Employee {
         this.salary = salary;
     }
 
-    public Employee(int id, String name, String email, String position, double salary) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.position = position;
-        this.salary = salary;
-    }
-
     // Getters and Setters
     public int getId() {
         return id;
@@ -63,15 +55,4 @@ public class Employee {
         this.salary = salary;
     }
 
-    // Debugging: طباعة بيانات الموظف
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", position='" + position + '\'' +
-                ", salary=" + salary +
-                '}';
-    }
 }

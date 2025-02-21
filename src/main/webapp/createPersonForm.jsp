@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container mt-5">
-    <h2 class="text-center mb-4">Formul employee </h2>
+    <h2 class="text-center mb-4">List employee </h2>
     <form action="createEmployee" method="post">
         <div class="form-group">
             <label for="name">Nom:</label>

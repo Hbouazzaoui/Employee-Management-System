@@ -29,20 +29,20 @@ public class UpdateServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
             int id = Integer.parseInt(request.getParameter("id"));
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             String position = request.getParameter("position");
             double salary = Double.parseDouble(request.getParameter("salary"));
 
-            Employee employee = new Employee(id, name, email, position, salary);
+            Employee employee = new Employee(name, email, position, salary);
+          employee.setId(id);
             employeeDAO.updateEmployee(employee);
 
-            response.sendRedirect("readEmployee");
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            response.sendRedirect("error.jsp");
+
+         System.out.println(employee.getId());
+
+            response.sendRedirect("ReadServlet");
         }
-    }
+
 }

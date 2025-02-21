@@ -1,4 +1,5 @@
 package com.example.personcrud.controllers;
+
 import com.example.personcrud.dao.employeeDAO;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,7 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet("/")
+@WebServlet("/delete")
 public class DeleteServlet extends HttpServlet {
     private employeeDAO employeeDAO;
 
@@ -18,10 +19,23 @@ public class DeleteServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        employeeDAO.deleteEmployee(id);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        handleDelete(request, response);
+    }
 
-        response.sendRedirect("select");
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        handleDelete(request, response);
+    }
+
+    private void handleDelete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            employeeDAO.deleteEmployee(id);
+            response.sendRedirect("ReadServlet");
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            response.sendRedirect("error.jsp");
+        }
     }
 }

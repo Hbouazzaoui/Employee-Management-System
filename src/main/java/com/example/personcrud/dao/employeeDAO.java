@@ -53,12 +53,12 @@ public class employeeDAO {
              ResultSet rs = stmt.executeQuery(query)) {
             while (rs.next()) {
                 Employee employee = new Employee(
-                        rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("email"),
                         rs.getString("position"),
                         rs.getDouble("salary")
                 );
+                employee.setId(rs.getInt("id"));
                 employeeList.add(employee);
             }
         } catch (SQLException e) {
@@ -75,12 +75,13 @@ public class employeeDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     employee = new Employee(
-                            rs.getInt("id"),
                             rs.getString("name"),
                             rs.getString("email"),
                             rs.getString("position"),
                             rs.getDouble("salary")
                     );
+
+                    employee.setId(rs.getInt("id"));
                 }
             }
         } catch (SQLException e) {

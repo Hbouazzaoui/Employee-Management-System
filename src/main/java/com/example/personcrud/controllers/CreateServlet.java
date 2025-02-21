@@ -27,6 +27,7 @@ public class CreateServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
+
             String name = request.getParameter("name");
             String email = request.getParameter("email");
             String position = request.getParameter("position");
@@ -35,7 +36,7 @@ public class CreateServlet extends HttpServlet {
             Employee employee = new Employee(name, email, position, salary);
             employeeDAO.createEmployee(employee);
 
-            response.sendRedirect("select");
+            response.sendRedirect("ReadServlet");
         } catch (NumberFormatException e) {
             e.printStackTrace();
             response.sendRedirect("error.jsp");

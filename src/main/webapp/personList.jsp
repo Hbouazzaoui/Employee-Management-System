@@ -2,7 +2,7 @@
 <%@ page import="java.util.List" %>
 
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,9 +26,8 @@
         </thead>
         <tbody>
         <%
-
-            List<Employee> listEmployee = (List<Employee>) request.getAttribute("listEmployee");
-            if (listEmployee != null) {
+            List<Employee> listEmployee = (List<Employee>) request.getAttribute("personList");
+            if (listEmployee != null && !listEmployee.isEmpty()) {
                 for (Employee employee : listEmployee) {
         %>
         <tr>
@@ -38,8 +37,8 @@
             <td><%= employee.getPosition() %></td>
             <td><%= employee.getSalary() %></td>
             <td>
-                <a href="edit?id=<%= employee.getId() %>">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="deletePerson?id=<%= employee.getId() %>">Delete</a>
+                <a href="updateEmployeeForm?id=<%= employee.getId() %>" class="btn btn-success">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="delete?id=<%= employee.getId() %>" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         <%
