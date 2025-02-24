@@ -21,7 +21,7 @@ public class CreateServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.getRequestDispatcher("createPersonForm.jsp").forward(request, response);
+        request.getRequestDispatcher("personList.jsp").forward(request, response);
     }
 
     @Override
